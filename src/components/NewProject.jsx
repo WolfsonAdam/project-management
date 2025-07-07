@@ -3,7 +3,7 @@ import Button from "./Button";
 import { useRef } from "react";
 import Modal from "./Modal";
 
-export default function NewProject({ onAdd }) {
+export default function NewProject({ onAdd, onCancel }) {
   const title = useRef();
   const description = useRef();
   const dueDate = useRef();
@@ -38,7 +38,10 @@ export default function NewProject({ onAdd }) {
       <div className="w-[35rem] mt-16">
         <menu className="flex items-center justify-end gap-4 my-4">
           <li>
-            <button className="text-stone-800 hover:text-stone-950">
+            <button
+              className="text-stone-800 hover:text-stone-950"
+              onClick={onCancel}
+            >
               Cancel
             </button>
           </li>
@@ -47,9 +50,9 @@ export default function NewProject({ onAdd }) {
           </li>
         </menu>
         <div>
-          <Input type="text" ref={title} lable="Title" />
-          <Input ref={description} lable="Description" textArea={true} />
-          <Input type="date" ref={dueDate} lable="Due Date" />
+          <Input type="text" ref={title} label="Title" />
+          <Input ref={description} label="Description" textArea={true} />
+          <Input type="date" ref={dueDate} label="Due Date" />
         </div>
       </div>
     </>
