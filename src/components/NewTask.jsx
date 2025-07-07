@@ -1,9 +1,13 @@
 import { useState } from "react";
 
-export default function NewTask() {
+export default function NewTask({ onAdd }) {
   const [enteredTask, setEnteredTask] = useState();
   function handleChange(event) {
-    setEnteredTask(event.target, value);
+    setEnteredTask(event.target.value);
+  }
+  function handleClick() {
+    onAdd(enteredTask);
+    setEnteredTask("");
   }
   return (
     <div className="flex items-center gap-4">
@@ -13,7 +17,12 @@ export default function NewTask() {
         onChange={handleChange}
         value={enteredTask}
       />
-      <button className="text-slate-700 hover:text-stone-950">Add Task</button>
+      <button
+        onClick={handleClick}
+        className="text-slate-700 hover:text-stone-950"
+      >
+        Add Task
+      </button>
     </div>
   );
 }
